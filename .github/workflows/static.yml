@@ -1,31 +1,50 @@
-# .github/workflows/deploy.yml
-name: Deploy to GitHub Pages
+name: Production Deployment
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
 
-permissions:
-  contents: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  test-build-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '20'
+          cache: 'npm'
 
-      - run: npm install
+      - name: Install dependencies
+        run: npm ci --prefer-offline
 
-      - run: npm run build
+      - name: Typecheck
+        run: npm run typecheck
 
-      - name: Deploy
+      - name: Build production
+        run: |
+          npm run build
+          # Verify source maps exist
+          ls -la dist/assets/*.map
+          
+          # Run analysis with explicit source map paths
+          npx source-map-explorer dist/assets/*.js dist/assets/*.js.map
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          force_orphan: true
+          enable_jekyll: false
