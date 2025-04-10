@@ -34,7 +34,7 @@ jobs:
       - name: Build production
         run: |
           npm run build
-          npm run build:analyze
+          npx source-map-explorer dist/assets/*.js --no-open
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
