@@ -45,13 +45,14 @@ jobs:
           # Run analysis with explicit source map paths
           npx source-map-explorer dist/assets/*.js dist/assets/*.js.map
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+          
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
-          enable_jekyll: false
-          full_commit_message: "Deploy to GitHub Pages (CI)"
-          allow_empty_commit: true
+        uses: actions/deploy-pages@v4
