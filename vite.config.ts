@@ -8,11 +8,29 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    strictPort: true,
+  },
+  preview: {
+    port: 8080,
+    strictPort: true,
+  },
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    sourcemap: mode === "development",
+    minify: mode === "production" ? "terser" : false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          vendor: ["sonner", "react-hook-form"],
+        },
+      },
+    },
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === "development" && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
