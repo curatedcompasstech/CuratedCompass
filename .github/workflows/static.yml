@@ -1,5 +1,10 @@
 name: Production Deployment
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 on:
   push:
     branches: [main]
@@ -48,3 +53,5 @@ jobs:
           publish_dir: ./dist
           force_orphan: true
           enable_jekyll: false
+          full_commit_message: "Deploy to GitHub Pages (CI)"
+          allow_empty_commit: true
