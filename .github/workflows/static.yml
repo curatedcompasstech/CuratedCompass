@@ -34,7 +34,11 @@ jobs:
       - name: Build production
         run: |
           npm run build
-          npx source-map-explorer dist/assets/*.js --no-open
+          # Verify source maps exist
+          ls -la dist/assets/*.map
+          
+          # Run analysis with explicit source map paths
+          npx source-map-explorer dist/assets/*.js dist/assets/*.js.map
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'

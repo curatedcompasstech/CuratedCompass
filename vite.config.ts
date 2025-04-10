@@ -14,11 +14,11 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     strictPort: true,
   },
-  build: {
-    outDir: "dist",
-    assetsDir: "assets",
-    sourcemap: mode === "development",
-    minify: mode === "production" ? "terser" : false,
+    build: {
+      outDir: "dist",
+      assetsDir: "assets",
+      sourcemap: true, // Always generate source maps
+      minify: mode === "production" ? "terser" : false,
     rollupOptions: {
       output: {
         manualChunks: {
