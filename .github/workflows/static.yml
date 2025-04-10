@@ -19,6 +19,9 @@ jobs:
   test-build-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout code
@@ -55,4 +58,5 @@ jobs:
           
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
+        id: deployment
         uses: actions/deploy-pages@v4
