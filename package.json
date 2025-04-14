@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-    "build": "vite build --mode production && cp public/404.html dist/404.html && cp public/_redirects dist/_redirects",
+    "build": "vite build --mode production && cp public/404.html dist/404.html && cp public/_redirects dist/_redirects && cp CNAME dist/CNAME",
         "build:dev": "vite build --mode development",
         "build:analyze": "vite build --mode production && source-map-explorer dist/assets/*.js",
         "lint": "eslint . --ext .ts,.tsx",
