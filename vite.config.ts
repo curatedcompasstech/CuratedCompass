@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { resolve } from 'path'
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
@@ -21,6 +22,9 @@ export default defineConfig(({ mode }) => ({
       sourcemap: true, // Always generate source maps
       minify: mode === "production" ? "terser" : false,
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+      },
       output: {
         manualChunks: {
           react: ["react", "react-dom"],
