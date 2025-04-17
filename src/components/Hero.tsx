@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="container-custom relative z-20 text-white pt-20">
         <div className="max-w-3xl animate-fade-in">
           <span className="inline-block px-4 py-1 rounded-full bg-travel-600/90 text-white text-sm font-medium mb-6">
-            Expertly Crafted Travel Experiences
+            Your Personal Travel Concierge
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Discover Your Perfect Journey with Expert Guidance
@@ -41,7 +41,7 @@ const Hero = () => {
             <Button 
               onClick={() => scrollToSection('services')}
               variant="outline" 
-              className="border-white text-white hover:bg-white/20 px-8 py-6 text-lg"
+              className="border-white text-white hover:bg-white/20 px-8 py-6 text-lg bg-compass-600/80 hover:bg-compass-600"
             >
               Our Services
             </Button>

@@ -46,10 +46,12 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-serif font-bold text-compass-700">
-            Curated<span className="text-travel-600">Compass</span>
-          </span>
+        <Link to="/" className="flex items-center">
+          <img 
+            src="/lovable-uploads/4afca358-cd94-423d-9b93-4ea302fd808d.png" 
+            alt="Curated Compass Logo" 
+            className="h-10 w-auto object-contain" 
+          />
         </Link>
 
         {/* Desktop Navigation */}

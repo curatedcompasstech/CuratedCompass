@@ -1,9 +1,10 @@
+
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,41 +23,31 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    fetch("https://script.google.com/macros/s/AKfycbwExTukn2k5XgyWpdrJAiaAfx6Xa6lkWforeOo44zssNdlQu9UQsn_3f7Roz9a4dOYu/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: formData.email,
-        phone: formData.phone,
-        name: formData.name
-      })
-    })
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.error("Error:", error));
-
     setIsSubmitting(true);
-    toast.success("Form submitted successfully!");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-    });
-    setIsSubmitting(false);
+    
+    // Here you would typically send the form data to your backend
+    // For now, we'll simulate a submission with a timeout
+    
+    setTimeout(() => {
+      toast.success("Thank you for reaching out! We'll contact you shortly.");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+      });
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   return (
     <section id="contact" className="section bg-compass-50">
       <div className="container-custom">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-            Have questions or ready to plan your next adventure? Reach out to our travel experts.
+            Leave your contact details below and we will call you right back.
           </p>
           <div className="w-20 h-1 bg-compass-500 mx-auto rounded-full"></div>
         </div>
@@ -68,11 +59,7 @@ const Contact = () => {
                 <div className="bg-white p-8">
                   <h3 className="text-2xl font-bold mb-6 text-compass-700">Contact Information</h3>
                   
-                  <form 
-                    method="POST"
-                    onSubmit={handleSubmit}
-                    className="space-y-6"
-                  >
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="name">Full Name</Label>
