@@ -48,7 +48,7 @@ const Navbar = () => {
       <div className="container-custom flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <img 
-            src="/lovable-uploads/4afca358-cd94-423d-9b93-4ea302fd808d.png" 
+            src="/CuratedCompass/Logo.jpeg" 
             alt="Curated Compass Logo" 
             className="h-10 w-auto object-contain" 
           />
