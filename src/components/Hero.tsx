@@ -13,7 +13,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center z-0" 
         style={{ 
-          backgroundImage: `url('/CuratedCompass/background.png')`, height: '100vh', backgroundSize: 'cover' 
+          backgroundImage: `url('/background.png')`, height: '100vh', backgroundSize: 'cover' 
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
