@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { ArrowDown } from "lucide-react";
+import React from "react";
 
 const Hero = () => {
   const { scrollToSection } = useSmoothScroll();
@@ -12,7 +13,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center z-0" 
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80')`,
+          backgroundImage: `url('/CuratedCompass/background.png')`, height: '100vh', backgroundSize: 'cover' 
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
