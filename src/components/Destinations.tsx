@@ -1,5 +1,5 @@
-
 import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
 
 const destinations = [
   {
@@ -25,6 +25,14 @@ const destinations = [
 ];
 
 const Destinations = () => {
+  const [showAll, setShowAll] = useState(false);
+  
+  const handleViewAll = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowAll(true);
+    // Keep user at current scroll position
+  };
+
   return (
     <section id="destinations" className="section">
       <div className="container-custom">
@@ -61,12 +69,12 @@ const Destinations = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <a 
-            href="#" 
+          <button 
+            onClick={handleViewAll}
             className="text-compass-600 font-medium hover:text-compass-800 underline underline-offset-4"
           >
             View All Destinations
-          </a>
+          </button>
         </div>
       </div>
     </section>
