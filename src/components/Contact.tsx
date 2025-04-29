@@ -35,9 +35,9 @@ const Contact = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: 'Test User',
-          email: 'ramzi796@gmail.com',
-          phone: '1234567890'
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone
         })
       });
     } catch (error) {
