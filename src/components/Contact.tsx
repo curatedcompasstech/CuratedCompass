@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
 
+const apiBase = import.meta.env.VITE_BACKEND_URL;
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -26,19 +28,28 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Here you would typically send the form data to your backend
-    // For now, we'll simulate a submission with a timeout
-    
-    setTimeout(() => {
+
+    try {
+      await fetch(`${apiBase}/api/submit-form`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Test User',
+          email: 'ramzi796@gmail.com',
+          phone: '1234567890'
+        })
+      });
+    } catch (error) {
+      toast.error(`Submission failed: ${error instanceof Error ? error.message : "Unknown error"}`);
+    } finally {
+      setIsSubmitting(false);
       toast.success("Thank you for reaching out! We'll contact you shortly.");
       setFormData({
         name: "",
         email: "",
         phone: "",
       });
-      setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
