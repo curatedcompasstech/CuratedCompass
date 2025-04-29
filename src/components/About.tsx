@@ -52,7 +52,7 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="bg-white w-16 h-16 mx-auto rounded-full flex items-center justify-center shadow-md mb-4">
-                <span className="text-3xl font-bold text-compass-600">15+</span>
+                <span className="text-3xl font-bold text-compass-600">5+</span>
               </div>
               <h4 className="text-xl font-bold mb-2">Years Experience</h4>
               <p className="text-gray-600">Trusted expertise in crafting exceptional journeys.</p>
