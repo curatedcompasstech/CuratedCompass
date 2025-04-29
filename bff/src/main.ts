@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:8080',
-      'https://curatedcompass.in',
+      'https://www.curatedcompass.in/',
       'https://curatedcompass.github.io',
     ],
     credentials: true,
