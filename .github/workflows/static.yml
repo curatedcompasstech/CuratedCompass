@@ -40,7 +40,7 @@ jobs:
         run: npm run typecheck
 
       - name: Set API base URL for prod
-        run: echo "VITE_BACKEND_URL=https://curatedcompass.in" >> .env
+        run: echo "VITE_BACKEND_URL=https://curatedcompass-backend.onrender.com" >> .env
 
       - name: Build production
         run: |
