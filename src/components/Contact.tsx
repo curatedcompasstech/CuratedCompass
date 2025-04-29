@@ -30,6 +30,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      console.log('env: ' + apiBase);
       await fetch(`${apiBase}/api/submit-form`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
