@@ -3,7 +3,7 @@ import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 
 const SCRIPTURL =
-  'https://script.google.com/macros/s/AKfycbxkJtN-o4Mc3Kh60zmE5igmj3aZ4AEwvz2sRY4d2cVnZ2-5TYwJ12jH7Igeu2aBhzyY/exec';
+  'https://script.google.com/macros/s/AKfycbySMYi4mZQo7RG_p0jSJDlLXUX0cjq0iVwWkiwtBQwThsJ5IuFJnkvRx7YAeM_vmcBh/exec';
 
 @Controller('api')
 export class AppController {
